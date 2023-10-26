@@ -34,6 +34,9 @@
 		4542EC3B2AEAC18300B66D20 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4542EC3A2AEAC18300B66D20 /* FirebaseRemoteConfigSwift */; };
 		4542EC3D2AEAC18300B66D20 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4542EC3C2AEAC18300B66D20 /* FirebaseStorage */; };
 		4542EC3F2AEAC18300B66D20 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 4542EC3E2AEAC18300B66D20 /* FirebaseStorageCombine-Community */; };
+		4542EC412AEACC4700B66D20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4542EC402AEACC4700B66D20 /* GoogleService-Info.plist */; };
+		4542EC432AEAD54200B66D20 /* BfyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542EC422AEAD54200B66D20 /* BfyUser.swift */; };
+		4542EC452AEAD55600B66D20 /* BfyBlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542EC442AEAD55600B66D20 /* BfyBlogPost.swift */; };
 		4569E7B02AEAAC6400A1D43F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7AF2AEAAC6400A1D43F /* AppDelegate.swift */; };
 		4569E7B22AEAAC6400A1D43F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7B12AEAAC6400A1D43F /* SceneDelegate.swift */; };
 		4569E7B42AEAAC6400A1D43F /* BfyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7B32AEAAC6400A1D43F /* BfyHomeViewController.swift */; };
@@ -53,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		4542EC082AEABD9800B66D20 /* Blogify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Blogify.app; path = "/Users/tarik.macos/Desktop/Projects/2. Blogify/Blogify/build/Debug-iphoneos/Blogify.app"; sourceTree = "<absolute>"; };
+		4542EC402AEACC4700B66D20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4542EC422AEAD54200B66D20 /* BfyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyUser.swift; sourceTree = "<group>"; };
+		4542EC442AEAD55600B66D20 /* BfyBlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyBlogPost.swift; sourceTree = "<group>"; };
 		4569E7AF2AEAAC6400A1D43F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4569E7B12AEAAC6400A1D43F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4569E7B32AEAAC6400A1D43F /* BfyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyHomeViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +138,8 @@
 		4569E7C32AEAB12A00A1D43F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4542EC422AEAD54200B66D20 /* BfyUser.swift */,
+				4542EC442AEAD55600B66D20 /* BfyBlogPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				4569E7AF2AEAAC6400A1D43F /* AppDelegate.swift */,
 				4569E7B12AEAAC6400A1D43F /* SceneDelegate.swift */,
 				4569E7B82AEAAC6500A1D43F /* Assets.xcassets */,
+				4542EC402AEACC4700B66D20 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,10 +176,10 @@
 		4569E7C72AEAB14300A1D43F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				4569E7DA2AEAB30500A1D43F /* BfyIAPManager.swift */,
-				4569E7DC2AEAB31B00A1D43F /* BfyDatabaseManager.swift */,
 				4569E7DE2AEAB32400A1D43F /* BfyAuthManager.swift */,
+				4569E7DC2AEAB31B00A1D43F /* BfyDatabaseManager.swift */,
 				4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */,
+				4569E7DA2AEAB30500A1D43F /* BfyIAPManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 			files = (
 				4569E7BC2AEAAC6500A1D43F /* LaunchScreen.storyboard in Resources */,
 				4569E7B92AEAAC6500A1D43F /* Assets.xcassets in Resources */,
+				4542EC412AEACC4700B66D20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,11 +321,13 @@
 				4569E7D82AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift in Sources */,
 				4569E7B02AEAAC6400A1D43F /* AppDelegate.swift in Sources */,
 				4569E7D22AEAB29100A1D43F /* BfySignInViewController.swift in Sources */,
+				4542EC432AEAD54200B66D20 /* BfyUser.swift in Sources */,
 				4569E7DB2AEAB30500A1D43F /* BfyIAPManager.swift in Sources */,
 				4569E7DD2AEAB31B00A1D43F /* BfyDatabaseManager.swift in Sources */,
 				4569E7D62AEAB2C300A1D43F /* BfyViewPostViewController.swift in Sources */,
 				4569E7CC2AEAB22500A1D43F /* BfyTabBarViewController.swift in Sources */,
 				4569E7CA2AEAB1E500A1D43F /* BfyProfileViewController.swift in Sources */,
+				4542EC452AEAD55600B66D20 /* BfyBlogPost.swift in Sources */,
 				4569E7D42AEAB29F00A1D43F /* BfySignOutViewController.swift in Sources */,
 				4569E7B22AEAAC6400A1D43F /* SceneDelegate.swift in Sources */,
 			);
