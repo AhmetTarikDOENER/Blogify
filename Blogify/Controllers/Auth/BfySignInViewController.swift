@@ -13,6 +13,14 @@ class BfySignInViewController: UITabBarController {
         super.viewDidLoad()
         title = "Sign In"
         view.backgroundColor = .systemBackground
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if !BfyIAPManager.shared.isPremium() {
+                let vc = BfyPaywallViewController()
+                let navVC = UINavigationController(rootViewController: vc)
+                self.present(navVC, animated: true)
+            }
+        }
     }
 
 }
