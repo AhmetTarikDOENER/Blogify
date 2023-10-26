@@ -1,5 +1,5 @@
 //
-//  BfySignInViewController.swift
+//  BfySignOutViewController.swift
 //  Blogify
 //
 //  Created by Ahmet Tarik DÖNER on 26.10.2023.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class BfySignInViewController: UITabBarController {
+class BfySignUpViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign In"
+        title = "Create Account"
         view.backgroundColor = .systemBackground
     }
-
 }

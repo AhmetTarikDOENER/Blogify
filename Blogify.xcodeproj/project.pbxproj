@@ -45,7 +45,7 @@
 		4569E7CA2AEAB1E500A1D43F /* BfyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7C92AEAB1E500A1D43F /* BfyProfileViewController.swift */; };
 		4569E7CC2AEAB22500A1D43F /* BfyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7CB2AEAB22500A1D43F /* BfyTabBarViewController.swift */; };
 		4569E7D22AEAB29100A1D43F /* BfySignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7D12AEAB29100A1D43F /* BfySignInViewController.swift */; };
-		4569E7D42AEAB29F00A1D43F /* BfySignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7D32AEAB29F00A1D43F /* BfySignOutViewController.swift */; };
+		4569E7D42AEAB29F00A1D43F /* BfySignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7D32AEAB29F00A1D43F /* BfySignUpViewController.swift */; };
 		4569E7D62AEAB2C300A1D43F /* BfyViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7D52AEAB2C300A1D43F /* BfyViewPostViewController.swift */; };
 		4569E7D82AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7D72AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift */; };
 		4569E7DB2AEAB30500A1D43F /* BfyIAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7DA2AEAB30500A1D43F /* BfyIAPManager.swift */; };
@@ -68,7 +68,7 @@
 		4569E7C92AEAB1E500A1D43F /* BfyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyProfileViewController.swift; sourceTree = "<group>"; };
 		4569E7CB2AEAB22500A1D43F /* BfyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyTabBarViewController.swift; sourceTree = "<group>"; };
 		4569E7D12AEAB29100A1D43F /* BfySignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignInViewController.swift; sourceTree = "<group>"; };
-		4569E7D32AEAB29F00A1D43F /* BfySignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignOutViewController.swift; sourceTree = "<group>"; };
+		4569E7D32AEAB29F00A1D43F /* BfySignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignUpViewController.swift; sourceTree = "<group>"; };
 		4569E7D52AEAB2C300A1D43F /* BfyViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyViewPostViewController.swift; sourceTree = "<group>"; };
 		4569E7D72AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyCreateNewPostViewController.swift; sourceTree = "<group>"; };
 		4569E7DA2AEAB30500A1D43F /* BfyIAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyIAPManager.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				4569E7D12AEAB29100A1D43F /* BfySignInViewController.swift */,
-				4569E7D32AEAB29F00A1D43F /* BfySignOutViewController.swift */,
+				4569E7D32AEAB29F00A1D43F /* BfySignUpViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				4569E7CC2AEAB22500A1D43F /* BfyTabBarViewController.swift in Sources */,
 				4569E7CA2AEAB1E500A1D43F /* BfyProfileViewController.swift in Sources */,
 				4542EC452AEAD55600B66D20 /* BfyBlogPost.swift in Sources */,
-				4569E7D42AEAB29F00A1D43F /* BfySignOutViewController.swift in Sources */,
+				4569E7D42AEAB29F00A1D43F /* BfySignUpViewController.swift in Sources */,
 				4569E7B22AEAAC6400A1D43F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
