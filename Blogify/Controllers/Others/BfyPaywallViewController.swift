@@ -56,7 +56,7 @@ class BfyPaywallViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height / 3.2)
-        termsView.frame = CGRect(x: 10, y: view.height - 100, width: view.width - 20, height: 100)
+        termsView.frame = CGRect(x: 10, y: view.height - 150, width: view.width - 20, height: 100)
         
         restoreButton.frame = CGRect(x: 25, y: termsView.top - 70, width: view.width - 50, height: 50)
         buyButton.frame = CGRect(x: 25, y: restoreButton.top - 60, width: view.width - 50, height: 50)
@@ -70,11 +70,49 @@ class BfyPaywallViewController: UIViewController {
     }
     
     @objc private func didTapSubcribe() {
-        
+        BfyIAPManager.shared.fetchPackages {
+            package in
+            guard let package = package else {
+                return
+            }
+            BfyIAPManager.shared.subscribe(package: package) {
+                [weak self] success in
+                print("Purchase: \(success)")
+                DispatchQueue.main.async {
+                    if success {
+                        self?.dismiss(animated: true)
+                    } else {
+                        let alert = UIAlertController(
+                            title: "Subscription failed.",
+                            message: "We were unable to complete the transaction",
+                            preferredStyle: .alert
+                        )
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                        self?.present(alert, animated: true)
+                    }
+                }
+            }
+        }
     }
     
     @objc private func didTapRestore() {
-        
+        BfyIAPManager.shared.restorePurchases {
+            [weak self] success in
+            print("Purchase: \(success)")
+            DispatchQueue.main.async {
+                if success {
+                    self?.dismiss(animated: true)
+                } else {
+                    let alert = UIAlertController(
+                        title: "Restoration failed.",
+                        message: "We were unable to restore the previous transaction",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    self?.present(alert, animated: true)
+                }
+            }
+        }
     }
     
     private func setupCloseButton() {

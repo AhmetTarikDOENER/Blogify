@@ -1,5 +1,5 @@
 {
-  "identifier" : "8B8F1F23",
+  "identifier" : "58C00286",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -58,7 +58,7 @@
   },
   "subscriptionGroups" : [
     {
-      "id" : "32869F60",
+      "id" : "9DE8F912",
       "localizations" : [
 
       ],
@@ -74,12 +74,8 @@
           "displayPrice" : "4.99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "A892695D",
-          "introductoryOffer" : {
-            "displayPrice" : "0.99",
-            "internalID" : "6F87A06C",
-            "paymentMode" : "none"
-          },
+          "internalID" : "96EFFC4D",
+          "introductoryOffer" : null,
           "localizations" : [
             {
               "description" : "Unlock all blogify posts",
@@ -87,10 +83,10 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.ahmettarik.premium",
+          "productID" : "com.ahmettarik.Blogify.premiummothly",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Premium Monthly",
-          "subscriptionGroupID" : "32869F60",
+          "subscriptionGroupID" : "9DE8F912",
           "type" : "RecurringSubscription"
         }
       ]
