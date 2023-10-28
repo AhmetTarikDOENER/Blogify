@@ -10,9 +10,8 @@ import UIKit
 class BfySignInHeaderView: UIView {
     
     private let imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "blogify"))
+        let imageView = UIImageView(image: UIImage(named: "Blogify"))
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .systemPink
         
         return imageView
     }()

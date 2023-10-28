@@ -52,6 +52,7 @@ final class BfyAuthManager {
     public func signOut(completion: (Bool) -> Void) {
         do {
             try auth.signOut()
+            completion(true)
         } catch {
             print(error)
             completion(false)
