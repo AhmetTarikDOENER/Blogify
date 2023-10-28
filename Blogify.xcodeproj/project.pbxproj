@@ -60,6 +60,7 @@
 		4569E7DD2AEAB31B00A1D43F /* BfyDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7DC2AEAB31B00A1D43F /* BfyDatabaseManager.swift */; };
 		4569E7DF2AEAB32400A1D43F /* BfyAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7DE2AEAB32400A1D43F /* BfyAuthManager.swift */; };
 		4569E7E12AEAB33000A1D43F /* BfyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */; };
+		457383332AEDA9820090DB35 /* BfySignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		4569E7DC2AEAB31B00A1D43F /* BfyDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyDatabaseManager.swift; sourceTree = "<group>"; };
 		4569E7DE2AEAB32400A1D43F /* BfyAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyAuthManager.swift; sourceTree = "<group>"; };
 		4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyStorageManager.swift; sourceTree = "<group>"; };
+		457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignInHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				4569E7BA2AEAAC6500A1D43F /* LaunchScreen.storyboard */,
 				4542EC4A2AEAFD0300B66D20 /* BfyPaywallHeaderView.swift */,
 				4542EC4E2AEB07F200B66D20 /* BfyPaywallDescriptionView.swift */,
+				457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				4569E7DB2AEAB30500A1D43F /* BfyIAPManager.swift in Sources */,
 				4569E7DD2AEAB31B00A1D43F /* BfyDatabaseManager.swift in Sources */,
 				4569E7D62AEAB2C300A1D43F /* BfyViewPostViewController.swift in Sources */,
+				457383332AEDA9820090DB35 /* BfySignInHeaderView.swift in Sources */,
 				4569E7CC2AEAB22500A1D43F /* BfyTabBarViewController.swift in Sources */,
 				4569E7CA2AEAB1E500A1D43F /* BfyProfileViewController.swift in Sources */,
 				4542EC452AEAD55600B66D20 /* BfyBlogPost.swift in Sources */,

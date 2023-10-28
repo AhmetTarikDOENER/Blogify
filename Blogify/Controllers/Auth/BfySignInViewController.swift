@@ -9,17 +9,17 @@ import UIKit
 
 class BfySignInViewController: UITabBarController {
 
+    private let headerView = BfySignInHeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign In"
         view.backgroundColor = .systemBackground
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !BfyIAPManager.shared.isPremium() {
-                let vc = BfyPaywallViewController()
-                let navVC = UINavigationController(rootViewController: vc)
-                self.present(navVC, animated: true)
-            }
-        }
+        view.addSubviews(headerView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height / 4)
     }
 }
