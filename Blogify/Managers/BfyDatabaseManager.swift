@@ -69,4 +69,29 @@ final class BfyDatabaseManager {
         
     }
     
+    func updateProfilePhoto(email: String, completion: @escaping (Bool) -> Void) {
+        let path = email
+            .replacingOccurrences(of: "@", with: "_")
+            .replacingOccurrences(of: ".", with: "_")
+        
+        let photoReference = "profile_pictures/\(path)/photo.png"
+        
+        let dbReference = database
+            .collection("users")
+            .document(path)
+        
+        dbReference.getDocument {
+            snapshot, error in
+            guard var data = snapshot?.data(), error == nil else {
+                return
+            }
+            data["profile_photo"] = photoReference
+            
+            dbReference.setData(data) {
+                error in
+                completion(error == nil)
+            }
+        }
+    }
+    
 }

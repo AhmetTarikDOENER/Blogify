@@ -59,12 +59,16 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     private func setupTableHeader(profilePhotoRef: String? = nil, name: String? = nil) {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width / 1.5))
         headerView.backgroundColor = .systemBlue
+        headerView.isUserInteractionEnabled = true
         headerView.clipsToBounds = true
         tableView.tableHeaderView = headerView
         
         let profilePhoto = UIImageView(image: UIImage(systemName: "person.circle"))
         profilePhoto.tintColor = .white
         profilePhoto.contentMode = .scaleAspectFit
+        profilePhoto.layer.masksToBounds = true
+        profilePhoto.layer.cornerRadius = profilePhoto.width / 2
+        profilePhoto.isUserInteractionEnabled = true
         profilePhoto.frame = CGRect(
             x: (view.width - (view.width / 4)) / 2,
             y: (headerView.height - (view.width / 4)) / 2.5,
@@ -72,6 +76,9 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
             height: view.width / 4
         )
         headerView.addSubview(profilePhoto)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfilePhoto))
+        profilePhoto.addGestureRecognizer(tap)
         
         let emailLabel = UILabel(frame: CGRect(x: 20, y: profilePhoto.bottom + 10, width: view.width - 40, height: 100))
         headerView.addSubview(emailLabel)
@@ -85,8 +92,36 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         if let ref = profilePhotoRef {
-            
+            BfyStorageManager.shared.downloadURLForProfilePicture(path: ref) {
+                url in
+                guard let url = url else {
+                    return
+                }
+                
+                let task = URLSession.shared.dataTask(with: url) {
+                    data, _, _ in
+                    guard let data = data else { return }
+                    
+                    DispatchQueue.main.async {
+                        profilePhoto.image = UIImage(data: data)
+                    }
+                }
+                task.resume()
+            }
         }
+    }
+    
+    @objc private func didTapProfilePhoto() {
+        guard let myEmail = UserDefaults.standard.string(forKey: "email"),
+                  myEmail == currentEmail else {
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     private func fetchProfileData() {
@@ -136,6 +171,12 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     
     //MARK: - TableView
     
+    private var posts: [BfyBlogPost] = []
+    
+    private func fetchPosts() {
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -145,5 +186,40 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
         cell.textLabel?.text = "Blog post goes here"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = BfyViewPostViewController()
+        vc.title = posts[indexPath.row].title
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
+}
+
+extension BfyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        
+        BfyStorageManager.shared.uploadUserProfilePicture(email: currentEmail, image: image) {
+            [weak self] success in
+            guard let strongSelf = self else { return }
+            if success {
+                BfyDatabaseManager.shared.updateProfilePhoto(email: strongSelf.currentEmail) {
+                    updated in
+                    guard updated else { return }
+                    DispatchQueue.main.async {
+                        strongSelf.fetchProfileData()
+                    }
+                }
+            }
+        }
+    }
 }
