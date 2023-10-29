@@ -91,7 +91,7 @@ class BfySignUpViewController: UITabBarController {
         BfyAuthManager.shared.signUp(email: email, password: password) {
             [weak self] success in
             if success {
-                let newUser = BfyUser(name: name, email: email, profilePicURL: nil)
+                let newUser = BfyUser(name: name, email: email, profilePicReference: nil)
                 BfyDatabaseManager.shared.insert(user: newUser) {
                     inserted in
                     guard inserted else {

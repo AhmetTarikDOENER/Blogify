@@ -46,4 +46,27 @@ final class BfyDatabaseManager {
             }
     }
     
+    public func getUser(email: String, completion: @escaping (BfyUser?) -> Void) {
+        let documentId = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
+        
+        database
+            .collection("users")
+            .document(documentId)
+            .getDocument {
+                snapshot, error in
+                guard let data = snapshot?.data() as? [String : String],
+                      let name = data["name"],
+                        error == nil else {
+                    return
+                }
+                
+                let ref = data["profile_photo"]
+                let user = BfyUser(name: name, email: email, profilePicReference: ref)
+                completion(user)
+            }
+        
+    }
+    
 }

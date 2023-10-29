@@ -10,5 +10,5 @@ import Foundation
 struct BfyUser {
     let name: String
     let email: String
-    let profilePicURL: URL?
+    let profilePicReference: String?
 }

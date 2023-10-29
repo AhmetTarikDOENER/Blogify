@@ -15,11 +15,18 @@ class BfyTabBarViewController: UITabBarController {
     }
     
     private func setupControllers() {
+       
+        guard let currentUserEmail = UserDefaults.standard.string(forKey: "email") else {
+            return
+        }
+        
         let homeVC = BfyHomeViewController()
         homeVC.title = "Home"
-        homeVC.navigationItem.largeTitleDisplayMode = .always
-        let profileVC = BfyProfileViewController()
+        
+        let profileVC = BfyProfileViewController(currentEmail: currentUserEmail)
         profileVC.title = "Profile"
+        
+        homeVC.navigationItem.largeTitleDisplayMode = .always
         profileVC.navigationItem.largeTitleDisplayMode = .always
         
         let nav1 = UINavigationController(rootViewController: homeVC)
