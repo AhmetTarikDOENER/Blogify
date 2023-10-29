@@ -83,11 +83,15 @@ class BfySignInViewController: UITabBarController {
             return
         }
         
+        BfyHapticsManager.shared.vibrateForSelection()
+        
         BfyAuthManager.shared.signIn(email: email, password: password) {
             [weak self] success in
             guard success else {
                 return
             }
+            // Update subs status for newly signed in user
+            BfyIAPManager.shared.getSubscriptionStatus(completion: nil)
             
             DispatchQueue.main.async {
                 UserDefaults.standard.set(email, forKey: "email")

@@ -13,14 +13,29 @@ final class BfyIAPManager {
     
     static let shared = BfyIAPManager()
     
-    private var postEligibleViewDate: Date? = nil
+    static let formatter = ISO8601DateFormatter()
+    
+    private var postEligibleViewDate: Date? {
+        get {
+            guard let string = UserDefaults.standard.string(forKey: "postEligibleViewDate") else {
+                return nil
+            }
+            return BfyIAPManager.formatter.date(from: string)
+        } set {
+            guard let date = newValue else { return }
+            let string = BfyIAPManager.formatter.string(from: date)
+            UserDefaults.standard.set(string, forKey: "postEligibleViewDate")
+        }
+    }
     
     private init() {}
+    
+    //MARK: - Public
     
     func isPremium() -> Bool {
         return UserDefaults.standard.bool(forKey: "premium")
     }
-    
+        
     public func getSubscriptionStatus(completion: ((Bool) -> Void)?) {
         Purchases.shared.getCustomerInfo {
             customerInfo, error in

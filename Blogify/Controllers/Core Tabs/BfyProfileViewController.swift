@@ -207,6 +207,8 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        BfyHapticsManager.shared.vibrateForSelection()
+        
         var isOwnedByCurrentUser = false
         if let email = UserDefaults.standard.string(forKey: "email") {
             isOwnedByCurrentUser = email == currentEmail

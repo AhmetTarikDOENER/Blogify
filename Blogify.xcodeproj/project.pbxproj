@@ -63,6 +63,7 @@
 		457383332AEDA9820090DB35 /* BfySignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */; };
 		45F5AF6F2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5AF6E2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift */; };
 		45F5AF712AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5AF702AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift */; };
+		45F5AF732AEF20A3009FADBF /* BfyHapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5AF722AEF20A3009FADBF /* BfyHapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignInHeaderView.swift; sourceTree = "<group>"; };
 		45F5AF6E2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyPostPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		45F5AF702AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		45F5AF722AEF20A3009FADBF /* BfyHapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyHapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				4569E7DC2AEAB31B00A1D43F /* BfyDatabaseManager.swift */,
 				4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */,
 				4569E7DA2AEAB30500A1D43F /* BfyIAPManager.swift */,
+				45F5AF722AEF20A3009FADBF /* BfyHapticsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				457383332AEDA9820090DB35 /* BfySignInHeaderView.swift in Sources */,
 				4569E7CC2AEAB22500A1D43F /* BfyTabBarViewController.swift in Sources */,
 				4569E7CA2AEAB1E500A1D43F /* BfyProfileViewController.swift in Sources */,
+				45F5AF732AEF20A3009FADBF /* BfyHapticsManager.swift in Sources */,
 				4542EC452AEAD55600B66D20 /* BfyBlogPost.swift in Sources */,
 				4569E7D42AEAB29F00A1D43F /* BfySignUpViewController.swift in Sources */,
 				4542EC4B2AEAFD0300B66D20 /* BfyPaywallHeaderView.swift in Sources */,

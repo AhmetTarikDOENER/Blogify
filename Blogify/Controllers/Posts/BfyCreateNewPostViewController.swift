@@ -108,7 +108,9 @@ class BfyCreateNewPostViewController: UITabBarController {
             BfyStorageManager.shared.downloadURLForPostHeader(email: email, postId: newPostId) {
                 url in
                 guard let headerUrl = url else {
-                    print("Failed to upload url for header")
+                    DispatchQueue.main.async {
+                        BfyHapticsManager.shared.vibrate(for: .error)
+                    }
                     return
                 }
                 let post = BfyBlogPost(identifier: newPostId, title: title, timestamp: Date().timeIntervalSince1970, headerImageURL: headerUrl, text: body)
@@ -116,11 +118,14 @@ class BfyCreateNewPostViewController: UITabBarController {
                 BfyDatabaseManager.shared.insert(blogPost: post, email: email) {
                     [weak self] posted in
                     guard posted else {
-                        print("Failed to post new article")
+                        DispatchQueue.main.async {
+                            BfyHapticsManager.shared.vibrate(for: .error)
+                        }
                         return
                     }
                     
                     DispatchQueue.main.async {
+                        BfyHapticsManager.shared.vibrate(for: .success)
                         self?.didTapCancel()
                     }
                 }

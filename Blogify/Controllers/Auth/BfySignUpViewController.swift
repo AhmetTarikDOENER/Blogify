@@ -88,6 +88,8 @@ class BfySignUpViewController: UITabBarController {
             return
         }
         
+        BfyHapticsManager.shared.vibrateForSelection()
+        
         BfyAuthManager.shared.signUp(email: email, password: password) {
             [weak self] success in
             if success {
