@@ -61,6 +61,8 @@
 		4569E7DF2AEAB32400A1D43F /* BfyAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7DE2AEAB32400A1D43F /* BfyAuthManager.swift */; };
 		4569E7E12AEAB33000A1D43F /* BfyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */; };
 		457383332AEDA9820090DB35 /* BfySignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */; };
+		45F5AF6F2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5AF6E2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift */; };
+		45F5AF712AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5AF702AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		4569E7DE2AEAB32400A1D43F /* BfyAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyAuthManager.swift; sourceTree = "<group>"; };
 		4569E7E02AEAB33000A1D43F /* BfyStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyStorageManager.swift; sourceTree = "<group>"; };
 		457383322AEDA9820090DB35 /* BfySignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfySignInHeaderView.swift; sourceTree = "<group>"; };
+		45F5AF6E2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyPostPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		45F5AF702AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BfyPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		4569E7C42AEAB13100A1D43F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				45F5AF6D2AEF03BB009FADBF /* Cells */,
 				4569E7BA2AEAAC6500A1D43F /* LaunchScreen.storyboard */,
 				4542EC4A2AEAFD0300B66D20 /* BfyPaywallHeaderView.swift */,
 				4542EC4E2AEB07F200B66D20 /* BfyPaywallDescriptionView.swift */,
@@ -255,6 +260,15 @@
 				4569E7D72AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		45F5AF6D2AEF03BB009FADBF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				45F5AF6E2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift */,
+				45F5AF702AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,11 +380,13 @@
 			files = (
 				4542EC4F2AEB07F200B66D20 /* BfyPaywallDescriptionView.swift in Sources */,
 				4569E7E12AEAB33000A1D43F /* BfyStorageManager.swift in Sources */,
+				45F5AF6F2AEF03D9009FADBF /* BfyPostPreviewTableViewCell.swift in Sources */,
 				4542EC4D2AEAFDB200B66D20 /* Extensions.swift in Sources */,
 				4569E7B42AEAAC6400A1D43F /* BfyHomeViewController.swift in Sources */,
 				4569E7DF2AEAB32400A1D43F /* BfyAuthManager.swift in Sources */,
 				4542EC482AEAF66C00B66D20 /* BfyPaywallViewController.swift in Sources */,
 				4569E7D82AEAB2D800A1D43F /* BfyCreateNewPostViewController.swift in Sources */,
+				45F5AF712AEF03E8009FADBF /* BfyPostHeaderTableViewCell.swift in Sources */,
 				4569E7B02AEAAC6400A1D43F /* AppDelegate.swift in Sources */,
 				4569E7D22AEAB29100A1D43F /* BfySignInViewController.swift in Sources */,
 				4542EC432AEAD54200B66D20 /* BfyUser.swift in Sources */,

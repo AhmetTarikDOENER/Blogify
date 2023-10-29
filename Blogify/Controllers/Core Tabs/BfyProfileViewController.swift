@@ -13,7 +13,7 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(BfyPostPreviewTableViewCell.self, forCellReuseIdentifier: BfyPostPreviewTableViewCell.identifier)
         
         return table
     }()
@@ -190,15 +190,25 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = post.title
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BfyPostPreviewTableViewCell.identifier,
+            for: indexPath
+        ) as? BfyPostPreviewTableViewCell else {
+            fatalError()
+        }
+        cell.configure(with: .init(title: post.title, imageURL: post.headerImageURL))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = BfyViewPostViewController()
-        vc.title = posts[indexPath.row].title
+        let vc = BfyViewPostViewController(post: posts[indexPath.row])
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.title = "Post"
         navigationController?.pushViewController(vc, animated: true)
     }
 
