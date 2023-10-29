@@ -14,17 +14,70 @@ final class BfyDatabaseManager {
     private let database = Firestore.firestore()
     private init() {}
     
-    // TODO: Add user to the database, Query all blogposts, Query all blogposts for a particular user, Post blogpost
-    public func insert(blogPost: BfyBlogPost, user: BfyUser, completion: @escaping (Bool) -> Void) {
+    public func insert(blogPost: BfyBlogPost, email: String, completion: @escaping (Bool) -> Void) {
+        let userEmail = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
         
+        let data: [String : Any] = [
+            "id": blogPost.identifier,
+            "title": blogPost.title,
+            "body": blogPost.text,
+            "created": blogPost.timestamp,
+            "headerImageURL": blogPost.headerImageURL?.absoluteString ?? ""
+        ]
+        
+        database
+            .collection("users")
+            .document(userEmail)
+            .collection("posts")
+            .document(blogPost.identifier)
+            .setData(data) {
+                error in
+                completion(error == nil)
+            }
     }
     
     public func getAllPosts(completion: @escaping ([BfyBlogPost]) -> Void) {
         
     }
     
-    public func getPosts(for user: BfyUser, completion: @escaping ([BfyBlogPost]) -> Void) {
-        
+    public func getPosts(for email: String, completion: @escaping ([BfyBlogPost]) -> Void) {
+        let userEmail = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
+        database
+            .collection("users")
+            .document(userEmail)
+            .collection("posts")
+            .getDocuments {
+                snapshot, error in
+                guard let documents = snapshot?.documents.compactMap({ $0.data() }), error == nil else {
+                    return
+                }
+                
+                let posts: [BfyBlogPost] = documents.compactMap {
+                    dictionary in
+                    guard let id = dictionary["id"] as? String,
+                          let title = dictionary["title"] as? String,
+                          let body = dictionary["body"] as? String,
+                          let created = dictionary["created"] as? TimeInterval,
+                          let imageURLString = dictionary["headerImageURL"] as? String else {
+                        print("Invalid post fetch convertion.")
+                        return nil
+                    }
+                
+                    let post = BfyBlogPost(
+                        identifier: id,
+                        title: title,
+                        timestamp: created,
+                        headerImageURL: URL(string: imageURLString),
+                        text: body
+                    )
+                    return post
+                }
+                completion(posts)
+            }
     }
     
     public func insert (user: BfyUser, completion: @escaping (Bool) -> Void) {

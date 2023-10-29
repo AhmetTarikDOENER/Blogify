@@ -39,6 +39,7 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
         setupSignOutButton()
         setupTable()
         title = "Profile"
+        fetchPosts()
     }
     
     override func viewDidLayoutSubviews() {
@@ -174,16 +175,23 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     private var posts: [BfyBlogPost] = []
     
     private func fetchPosts() {
-        
+        BfyDatabaseManager.shared.getPosts(for: currentEmail) {
+            [weak self] posts in
+            self?.posts = posts
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Blog post goes here"
+        cell.textLabel?.text = post.title
         return cell
     }
     

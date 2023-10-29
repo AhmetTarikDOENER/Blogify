@@ -37,7 +37,7 @@ class BfyHomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        composeButton.frame = CGRect(x: view.frame.width - 80 - 16, y: view.frame.height - 80 - 16 - view.safeAreaInsets.bottom, width: 60, height: 60)
+        composeButton.frame = CGRect(x: view.frame.width - 88, y: view.frame.height - 88 - view.safeAreaInsets.bottom, width: 60, height: 60)
     }
     
     @objc private func didTapCreatePost() {

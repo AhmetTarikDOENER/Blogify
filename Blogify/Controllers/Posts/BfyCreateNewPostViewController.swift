@@ -26,6 +26,7 @@ class BfyCreateNewPostViewController: UITabBarController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "photo")
         imageView.backgroundColor = .tertiarySystemBackground
         
@@ -88,8 +89,17 @@ class BfyCreateNewPostViewController: UITabBarController {
               let email = UserDefaults.standard.string(forKey: "email"),
               !title.trimmingCharacters(in: .whitespaces).isEmpty,
               !body.trimmingCharacters(in: .whitespaces).isEmpty else {
+            let alert = UIAlertController(
+                title: "Enter Post Details",
+                message: "Please enter a title body and select a image to continue",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+            present(alert, animated: true)
             return
         }
+        
+        print("Starting post...")
         
         let newPostId = UUID().uuidString
         BfyStorageManager.shared.uploadBlogHeaderImage(email: email, image: headerImage, postId: newPostId) {
@@ -97,8 +107,23 @@ class BfyCreateNewPostViewController: UITabBarController {
             guard success else { return }
             BfyStorageManager.shared.downloadURLForPostHeader(email: email, postId: newPostId) {
                 url in
-                guard let headerUrl = url else { return }
+                guard let headerUrl = url else {
+                    print("Failed to upload url for header")
+                    return
+                }
                 let post = BfyBlogPost(identifier: newPostId, title: title, timestamp: Date().timeIntervalSince1970, headerImageURL: headerUrl, text: body)
+                
+                BfyDatabaseManager.shared.insert(blogPost: post, email: email) {
+                    [weak self] posted in
+                    guard posted else {
+                        print("Failed to post new article")
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.didTapCancel()
+                    }
+                }
             }
         }
     }
