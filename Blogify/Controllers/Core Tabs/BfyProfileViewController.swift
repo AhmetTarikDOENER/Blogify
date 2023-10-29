@@ -206,12 +206,30 @@ class BfyProfileViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = BfyViewPostViewController(post: posts[indexPath.row])
-        vc.navigationItem.largeTitleDisplayMode = .never
-        vc.title = "Post"
-        navigationController?.pushViewController(vc, animated: true)
+        
+        var isOwnedByCurrentUser = false
+        if let email = UserDefaults.standard.string(forKey: "email") {
+            isOwnedByCurrentUser = email == currentEmail
+        }
+        
+        if !isOwnedByCurrentUser {
+            if BfyIAPManager.shared.canViewPost {
+                let vc = BfyViewPostViewController(post: posts[indexPath.row], isOwnedByCurrentUser: isOwnedByCurrentUser)
+                vc.navigationItem.largeTitleDisplayMode = .never
+                vc.title = "Post"
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = BfyPaywallViewController()
+                present(vc, animated: true)
+            }
+        } else {
+            // Our post
+            let vc = BfyViewPostViewController(post: posts[indexPath.row], isOwnedByCurrentUser: isOwnedByCurrentUser)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            vc.title = "Post"
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
-
 }
 
 extension BfyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

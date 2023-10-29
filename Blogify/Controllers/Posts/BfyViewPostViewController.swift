@@ -10,9 +10,11 @@ import UIKit
 class BfyViewPostViewController: UITabBarController, UITableViewDataSource, UITableViewDelegate {
 
     private let post: BfyBlogPost
+    private let isOwnedByCurrentUser: Bool
     
-    init(post: BfyBlogPost) {
+    init(post: BfyBlogPost, isOwnedByCurrentUser: Bool = false) {
         self.post = post
+        self.isOwnedByCurrentUser = isOwnedByCurrentUser
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,6 +36,10 @@ class BfyViewPostViewController: UITabBarController, UITableViewDataSource, UITa
         view.addSubviews(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if !isOwnedByCurrentUser {
+            BfyIAPManager.shared.logPostViewed()
+        }
     }
     
     override func viewDidLayoutSubviews() {

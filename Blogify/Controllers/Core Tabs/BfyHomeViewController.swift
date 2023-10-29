@@ -92,6 +92,13 @@ class BfyHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard BfyIAPManager.shared.canViewPost else {
+            let vc = BfyPaywallViewController()
+            present(vc, animated: true)
+            return
+        }
+        
         let vc = BfyViewPostViewController(post: posts[indexPath.row])
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.title = "Post"
